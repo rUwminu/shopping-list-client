@@ -1,0 +1,5 @@
+export const ITEM_INFO_REQUEST = "ITEM_INFO_REQUEST";
+export const ITEM_INFO_SUCCESS = "ITEM_INFO_SUCCESS";
+export const ITEM_INFO_FAIL = "ITEM_INFO_FAIL";
+export const ITEM_INFO_CLOSE = "ITEM_INFO_CLOSE";
+export const ITEM_DELETE = "ITEM_DELETE";
