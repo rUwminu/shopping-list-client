@@ -11,7 +11,7 @@ import PrivateRoute from './utils/PrivateRoute'
 import { useSelector } from 'react-redux'
 
 // Pages & components
-import { HomePage, LoginPage, HistoryPage } from './pages/index'
+import { HomePage, LoginPage, HistoryPage, ErrorPage } from './pages/index'
 import { Navbar, AsideList } from './components/index'
 
 function App() {
@@ -55,6 +55,7 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
           {user && <AsideList />}
         </MainContainer>
