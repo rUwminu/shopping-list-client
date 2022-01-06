@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/shopping-list-client/static/css/main.6e8afac9.chunk.css",
+    "main.js": "/shopping-list-client/static/js/main.9727a915.chunk.js",
+    "main.js.map": "/shopping-list-client/static/js/main.9727a915.chunk.js.map",
+    "runtime-main.js": "/shopping-list-client/static/js/runtime-main.04daeab0.js",
+    "runtime-main.js.map": "/shopping-list-client/static/js/runtime-main.04daeab0.js.map",
+    "static/js/2.04d3f4e0.chunk.js": "/shopping-list-client/static/js/2.04d3f4e0.chunk.js",
+    "static/js/2.04d3f4e0.chunk.js.map": "/shopping-list-client/static/js/2.04d3f4e0.chunk.js.map",
+    "index.html": "/shopping-list-client/index.html",
+    "static/css/main.6e8afac9.chunk.css.map": "/shopping-list-client/static/css/main.6e8afac9.chunk.css.map",
+    "static/js/2.04d3f4e0.chunk.js.LICENSE.txt": "/shopping-list-client/static/js/2.04d3f4e0.chunk.js.LICENSE.txt",
+    "static/media/Delivery.7aaeae6e.svg": "/shopping-list-client/static/media/Delivery.7aaeae6e.svg",
+    "static/media/Options.91f568aa.svg": "/shopping-list-client/static/media/Options.91f568aa.svg",
+    "static/media/Payment.6f7aa955.svg": "/shopping-list-client/static/media/Payment.6f7aa955.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.04daeab0.js",
+    "static/js/2.04d3f4e0.chunk.js",
+    "static/css/main.6e8afac9.chunk.css",
+    "static/js/main.9727a915.chunk.js"
+  ]
+}
