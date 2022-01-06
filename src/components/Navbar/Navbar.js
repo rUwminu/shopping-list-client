@@ -32,6 +32,8 @@ const Navbar = () => {
   const listItem = useSelector((state) => state.listItem)
   const { activeList } = listItem
 
+  const baseUrl = 'shopping-list-client/'
+
   return (
     <NavContainer>
       {user && (
@@ -60,7 +62,7 @@ const Navbar = () => {
           </div>
           <div className="nav-links">
             <Link
-              to={`/`}
+              to={`${baseUrl}`}
               onClick={() => setIsNavItemActive('home')}
               className={`nav-item ${isNavItemActive === 'home' && 'active'}`}
             >
@@ -68,7 +70,7 @@ const Navbar = () => {
               <span className="pop-up">Items</span>
             </Link>
             <Link
-              to={`/history`}
+              to={`${baseUrl}history`}
               onClick={() => setIsNavItemActive('history')}
               className={`nav-item ${
                 isNavItemActive === 'history' && 'active'

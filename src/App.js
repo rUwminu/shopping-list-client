@@ -26,7 +26,7 @@ function App() {
   const userSignIn = useSelector((state) => state.userSignIn)
   const { user } = userSignIn
 
-  const baseURL = ''
+  const baseUrl = 'shopping-list-client/'
 
   return (
     <ApolloProvider client={client}>
@@ -36,10 +36,10 @@ function App() {
 
           {/* Wraping all children route  */}
           <Routes path="/" element={<Guestlayout />}>
-            <Route path={`${baseURL}login`} element={<LoginPage />} />
+            <Route path={`${baseUrl}login`} element={<LoginPage />} />
 
             <Route
-              index
+              path={`${baseUrl}`}
               element={
                 <PrivateRoute>
                   <HomePage />
@@ -48,7 +48,7 @@ function App() {
             />
 
             <Route
-              path={`${baseURL}history`}
+              path={`${baseUrl}history`}
               element={
                 <PrivateRoute>
                   <HistoryPage />
@@ -74,6 +74,7 @@ const MainContainer = styled.div`
     w-screen
     h-screen
     bg-gray-200
+    bg-opacity-80
     overflow-hidden
   `}
 `

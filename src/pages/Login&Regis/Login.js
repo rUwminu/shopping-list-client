@@ -44,7 +44,7 @@ const Login = () => {
   const { user } = userSignIn
 
   useEffect(() => {
-    if (user) navigate('/')
+    if (user) navigate('/shopping-list-client')
   }, [user, navigate])
 
   useEffect(() => {

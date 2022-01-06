@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { gql, useLazyQuery } from '@apollo/client'
 import moment from 'moment'
+import { useLocation } from 'react-router-dom'
 
 // Components
 import HistorySingle from './HistorySingle'
@@ -30,6 +31,8 @@ const Month = [
 ]
 
 const HistoryPage = () => {
+  const location = useLocation()
+
   const sliderRef = useRef()
   const [listArr, setListArr] = useState([])
   const [isView, setIsView] = useState(false)
@@ -58,7 +61,7 @@ const HistoryPage = () => {
 
   useEffect(() => {
     getUserSelfList()
-  }, [])
+  }, [location.pathname])
 
   useEffect(() => {
     if (data && !loading) {
@@ -109,7 +112,7 @@ const HistoryPage = () => {
             <HistoryContainer>
               <h1 className="history-title">Shopping History</h1>
               <div className="list-container">
-                {listArr &&
+                {listArr && listArr.length > 0 ? (
                   listArr.map((x, index) => {
                     const { year, groupByMonth } = x
 
@@ -173,7 +176,12 @@ const HistoryPage = () => {
                         })}
                       </div>
                     )
-                  })}
+                  })
+                ) : (
+                  <div className="empty-container">
+                    <span>Seem like empty here. Nothing on your mind?.</span>
+                  </div>
+                )}
               </div>
             </HistoryContainer>
             <HistorySingle
@@ -266,6 +274,14 @@ const HistoryContainer = styled.div`
         h-full 
       `}
     }
+  }
+
+  .empty-container {
+    ${tw`
+      flex
+      flex-col
+      font-semibold
+    `}
   }
 `
 

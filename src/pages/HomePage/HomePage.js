@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { gql, useLazyQuery } from '@apollo/client'
+import { useLocation } from 'react-router-dom'
 
 // Styling import
 import tw from 'twin.macro'
@@ -15,9 +16,13 @@ import { getItemInfoNOpen } from '../../redux/actions/itemAction'
 import { addItemToList } from '../../redux/actions/listAction'
 
 // Material Icon
-import { Add } from '@mui/icons-material'
+import { Add, InfoOutlined } from '@mui/icons-material'
 
 const HomePage = () => {
+  const location = useLocation()
+
+  console.log(location.pathname)
+
   const dispatch = useDispatch()
   const [selectedItem, setSelectedItem] = useState({
     cateId: '',
@@ -74,14 +79,18 @@ const HomePage = () => {
 
   // UseEffect to get user category list
   useEffect(() => {
-    if (!allCategory || allCategory.length === 0) {
+    // if (!allCategory || allCategory.length === 0) {
+    //   getSelfCategory()
+    // }
+
+    if (location.pathname) {
       getSelfCategory()
     }
 
     if (data) {
       dispatch(getCategoryList(data))
     }
-  }, [data])
+  }, [data, location.pathname])
 
   // UseEffect to get item info
   useEffect(() => {
@@ -103,7 +112,7 @@ const HomePage = () => {
             wherever you go
           </h1>
           <div className="category-container">
-            {allCategory &&
+            {allCategory && allCategory.length > 0 ? (
               allCategory.map((category, index) => {
                 const { id: cateId, typeCategory, items } = category
 
@@ -143,7 +152,27 @@ const HomePage = () => {
                     </div>
                   </CategoryList>
                 )
-              })}
+              })
+            ) : (
+              <div className="empty-container">
+                <span>
+                  Seem like empty here. You might want to add something.
+                </span>
+                <div className="empty-hint">
+                  <div className="hint-icon">
+                    <InfoOutlined className="icon" />
+                    <span>Hint</span>
+                  </div>
+                  <p className="hint-info">
+                    You can add item from the button on top right.
+                  </p>
+                  <p className="hint-info">
+                    If you on mobile, tap on the cart icon to show the menu, and
+                    tap on add item button.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </HomeSection>
       )}
@@ -217,6 +246,48 @@ const HomeSection = styled.div`
       w-full
     `}
   }
+
+  .empty-container {
+    ${tw`
+      flex
+      flex-col
+      font-semibold
+    `}
+
+    .empty-hint {
+      ${tw`
+        w-full
+        mt-6
+      `}
+
+      .hint-icon {
+        ${tw`
+          flex
+          items-center
+          justify-start
+          mb-2
+          text-yellow-500
+        `}
+
+        .icon {
+          ${tw`
+            relative
+            mr-2
+          `}
+        }
+      }
+
+      .hint-info {
+        ${tw`
+          w-full
+          py-1
+          list-item
+          text-sm
+          text-gray-600
+        `}
+      }
+    }
+  }
 `
 
 const CategoryList = styled.div`
@@ -256,7 +327,11 @@ const CategoryList = styled.div`
         justify-between
         bg-white
         shadow-md
-        rounded-md  
+        rounded-md 
+        
+        transition
+        duration-200
+        ease-in-out
       `}
 
       h3 {
@@ -319,6 +394,12 @@ const CategoryList = styled.div`
             `}
           }
         }
+      }
+
+      &:hover {
+        ${tw`
+          shadow-xl
+        `}
       }
     }
   }

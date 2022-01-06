@@ -117,6 +117,8 @@ const AsideItemContainer = styled.div`
     py-14
     px-10
     bg-white
+    border-l
+    border-gray-300
 
     transition-all
     duration-500
