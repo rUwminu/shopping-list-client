@@ -21,8 +21,6 @@ import { Add, InfoOutlined } from '@mui/icons-material'
 const HomePage = () => {
   const location = useLocation()
 
-  console.log(location.pathname)
-
   const dispatch = useDispatch()
   const [selectedItem, setSelectedItem] = useState({
     cateId: '',
